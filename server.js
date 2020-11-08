@@ -49,6 +49,8 @@ function onConnect(socket) {
   let size = Math.random() * 40 + 5;
   //send them the client
   socket.emit("init", { color: color, size: size });
+  // send a message to all the others
+  socket.broadcast.emit("welcome", { color: color });
   // when the client send a message called "mouse"
   // exectute the function "mouseMessage"
   socket.on("mouse", mouseMessage);

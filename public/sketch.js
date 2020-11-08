@@ -12,7 +12,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // put setup code here
-  background("black");
+
   console.log("socket:", socket.id);
 }
 
@@ -20,7 +20,10 @@ function initFunction(data) {
   console.log("init", data);
   color = data.color;
   size = data.size;
-  initialised = true;
+  background("black");
+  fill(color);
+  textAlign(CENTER, CENTER);
+  text("Welcome " + color, width / 2, height / 2);
 }
 
 function otherMouse(data) {

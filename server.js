@@ -26,7 +26,7 @@ let socket = require("socket.io");
 // initialise express
 let app = express();
 // choose port number
-let port = 3000;
+let port = process.env.PORT || 3000;
 // start the server
 let server = app.listen(port);
 // define the folde that will be used
@@ -42,10 +42,10 @@ io.on("connect", onConnect);
 function onConnect(socket) {
   // print the id of the new connection
   console.log("new connection:", socket.client.id);
-  // select a color
+  // select a random color from the array
   let color =
     CSS_COLOR_NAMES[Math.floor(Math.random() * CSS_COLOR_NAMES.length)];
-  // choose a size
+  // choose a random size between 5 and 45
   let size = Math.random() * 40 + 5;
   //send them the client
   socket.emit("init", { color: color, size: size });

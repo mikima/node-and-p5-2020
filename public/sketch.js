@@ -15,13 +15,6 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   // put setup code here
   noStroke();
-  console.log("socket:", socket.id);
-  if (initialised) {
-    background("black");
-    fill(color);
-    textAlign(CENTER, CENTER);
-    text("Welcome " + color, width / 2, height / 2);
-  }
 }
 
 function initFunction(data) {
@@ -47,8 +40,17 @@ function printWelcome(message) {
 }
 
 function draw() {
-  // put drawing code here
+  // draw background to create 'fade' effect
   background(0, 5);
+  // as soon as the welcome message is received,
+  // print it
+  if (initialised) {
+    background("black");
+    fill(color);
+    textAlign(CENTER, CENTER);
+    text("Welcome " + color, width / 2, height / 2);
+    initialised = false;
+  }
 }
 
 function mouseMoved() {
